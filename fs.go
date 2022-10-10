@@ -20,7 +20,7 @@ import (
 	"time"
 
 	_ "github.com/mattn/go-sqlite3"
-	"github.com/nielsAD/autoindex/walk"
+	"github.com/zizzydizzymc/autoindex-warp/walk"
 	"golang.org/x/exp/slices"
 )
 

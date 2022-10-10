@@ -9,7 +9,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/zizzydizzymc/autoindex/walk"
+	"github.com/zizzydizzymc/autoindex-warp/walk"
 )
 
 func TestWalk(t *testing.T) {
