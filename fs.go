@@ -21,6 +21,7 @@ import (
 
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/nielsAD/autoindex/walk"
+	"golang.org/x/exp/slices"
 )
 
 // CachedFS struct
@@ -32,6 +33,7 @@ type CachedFS struct {
 	dbr     int32
 	dbp     string
 	Root    string
+	dirHide string
 	Cached  bool
 	Timeout time.Duration
 }
@@ -360,8 +362,7 @@ func (fs *CachedFS) serveCache(w http.ResponseWriter, r *http.Request) {
 
 		f := File{Name: root[trim:] + name}
 		if dir {
-			if name == "Tantabus" {
-				return
+			if slices.Contains(fs.dirHide, name) {
 			} else {
 				f.Type = "d"
 				resp = append(resp, f)

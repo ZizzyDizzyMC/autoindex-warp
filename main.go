@@ -27,6 +27,7 @@ var (
 	addr      = flag.String("a", ":80", "TCP network address to listen for connections")
 	db        = flag.String("d", "file::memory:?cache=shared", "Database location")
 	dir       = flag.String("r", ".", "Root directory to serve")
+	dirhide   = flag.String("dirhide", "", "Directories to hide in listing, separated with spaces")
 	refresh   = flag.String("i", "1h", "Refresh interval")
 	ratelimit = flag.Int64("l", 5, "Request rate limit (req/sec per IP)")
 	timeout   = flag.Duration("t", time.Second, "Request timeout")
@@ -56,6 +57,7 @@ func main() {
 
 	fs.Timeout = *timeout
 	fs.Cached = *cached
+	fs.dirHide = *dirhide
 	defer fs.Close()
 
 	go func() {
