@@ -360,12 +360,16 @@ func (fs *CachedFS) serveCache(w http.ResponseWriter, r *http.Request) {
 
 		f := File{Name: root[trim:] + name}
 		if dir {
-			f.Type = "d"
+			if name == "Tantabus" {
+				return
+			} else {
+				f.Type = "d"
+				resp = append(resp, f)
+			}
 		} else {
 			f.Type = "f"
+			resp = append(resp, f)
 		}
-
-		resp = append(resp, f)
 	}
 
 	if err := rows.Err(); err != nil {
