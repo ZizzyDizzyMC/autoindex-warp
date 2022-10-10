@@ -33,7 +33,7 @@ type CachedFS struct {
 	dbr     int32
 	dbp     string
 	Root    string
-	dirHide string
+	dirHide sort.StringSlice
 	Cached  bool
 	Timeout time.Duration
 }

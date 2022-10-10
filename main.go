@@ -57,7 +57,8 @@ func main() {
 
 	fs.Timeout = *timeout
 	fs.Cached = *cached
-	fs.dirHide = *dirhide
+	var tempDirHide = *dirhide
+	fs.dirHide = strings.Split(tempDirHide, " ")
 	defer fs.Close()
 
 	go func() {
